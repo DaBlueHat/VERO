@@ -4,6 +4,10 @@ import platform
 import time
 import webbrowser
 
+
+
+
+
 def VERO():
     AI = input("Please enter a command: ")
 
@@ -29,7 +33,7 @@ def VERO():
             print("The time is")
             print(now.strftime("%Y-%m-%d and " + "%H:%M:%S"))
             VERO()
-        case "neofetch":
+        case "Display system specs":
             print("System specs")
             print(f"Computer network name: {platform.node()}")
             print(f"Machine type: {platform.machine()}")
@@ -55,13 +59,41 @@ def VERO():
             print("##############################################################")
             print("----------------------WEB URL = " + web + "----------------------")
             webbrowser.open(web)
+            VERO()
+        case "Lets play some games":
+            print("Games")
+            print("Pong")
+            gameInput = input("Please enter the game you want to play: ")
 
-with open(r'VeroBoot\VeroBoot.VERO') as A:
-    
-    if A != "0":
-        print("Verifed")
-        VERO()
-    
+            match gameInput:
+                case "Flappy Bird":
+                    print("Loading Flappy Bird...")
+                    os.startfile(r'Games\Flappy-Bird\flappy_bird.py')
+                    VERO()
+                case "Snake":
+                    print("Loading Snake...")
+                    os.startfile(r'Games\Snake\snake_ursina.py')
+        case "shutdown":
+            print("Shutting down...")
+            time.sleep(0.555)
+            exit()
+
+
+    if AI != "Lets play some games":
+        if AI != "web":
+            if AI != "Display system specs":
+                if AI != "What time is it":
+                    if AI != "Calculate my grades":
+                        if AI != "shutdown":
+                            print("Invalid command")
+                            VERO()
+
+    with open(r'VeroBoot\VeroBoot.VERO') as A:
+        
+        if A != "0":
+            print("Verifed")
+            VERO()
+        
     if A == "0":
         print("Error")
         os.startfile('VeroAI.py')
